@@ -1,5 +1,5 @@
-import { env } from "prisma/src/env";
-import { PrismaClient } from "../../generated/prisma";
+import { env } from "src/env";
+import { PrismaClient } from "@prisma/client";
 
 const createPrismaClient = () =>
   new PrismaClient({
