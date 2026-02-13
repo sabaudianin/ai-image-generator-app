@@ -8,7 +8,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
     <Providers>
       <div className="auth-page flex min-h-screen">
         {/* Left Side - Branding */}
-        <div className="relative hidden overflow-hidden bg-linear-to-br from-sky-900 via-blue-900 to-indigo-900 lg:flex lg:w-1/2">
+        <div className="relative hidden overflow-hidden bg-linear-to-br from-sky-900 via-blue-500 to-indigo-900 lg:flex lg:w-1/2">
           <div className="bg-grid-white/[0.1] absolute inset-0 bg-size-[30px_30px]" />
           <div className="relative z-10 flex flex-col justify-center px-12 xl:px-16">
             {/* Logo */}
@@ -16,10 +16,10 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               href="/"
               className="mb-12 flex cursor-pointer items-center gap-3"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-violet-400/30 bg-violet-500/20 backdrop-blur-sm">
-                <Sparkles className="h-8 w-8 text-violet-300" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl  bg-linear-to-r from-sky-500 to-blue-600 backdrop-blur-sm">
+                <Sparkles className="h-8 w-8 text-white" />
               </div>
-              <span className="text-2xl font-bold text-violet-50">
+              <span className="text-2xl font-bold text-white">
                 AI Image Generator App
               </span>
             </Link>
@@ -69,33 +69,30 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
 
-            {/* Bottom Stats */}
+           
             <div className="mt-16 grid grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="text-2xl font-bold text-rose-300">1K+</div>
+                <div className="text-2xl font-bold text-lime-300">1K+</div>
                 <div className="text-sm text-white">
                   Images Generated
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-pink-400">0.5K+</div>
+                <div className="text-2xl font-bold text-pink-300">0.5K+</div>
                 <div className="text-sm text-white">Happy Users</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-amber-400">4.8★</div>
+                <div className="text-2xl font-bold text-amber-300">4.8★</div>
                 <div className="text-sm text-white">Rating</div>
               </div>
             </div>
           </div>
 
-          {/* Decorative Elements */}
-          <div className="absolute top-20 right-20 h-32 w-32 rounded-full bg-violet-400/20 blur-3xl" />
-          <div className="absolute right-32 bottom-20 h-24 w-24 rounded-full bg-pink-400/15 blur-2xl" />
-          <div className="absolute top-1/2 right-10 h-16 w-16 rounded-full bg-indigo-400/20 blur-xl" />
+         
         </div>
 
         {/* Right Side - Auth Form */}
-        <div className="flex flex-1 flex-col justify-center bg-linear-to-br from-slate-50 to-violet-50/30 px-6 py-12 lg:px-8">
+        <div className="flex flex-1 flex-col justify-center bg-linear-to-tr from-indigo-900 via-blue-500 to-sky-900 px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             {/* Mobile Logo */}
             <div className="mb-8 text-center lg:hidden">
@@ -103,10 +100,10 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
                 href="/"
                 className="inline-flex cursor-pointer items-center gap-2"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-r from-sky-500 to-blue-600 shadow-lg">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-r from-sky-500 to-blue-600 shadow-lg ">
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
-                <span className="bg-linear-to-r from-sky-600 to-indigo-600 bg-clip-text text-xl font-bold text-transparent">
+                <span className="text-white bg-clip-text text-xl font-bold ">
                   AI Image Generator App
                 </span>
               </Link>
@@ -116,11 +113,11 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             <div>{children}</div>
 
             {/* Footer Link */}
-            <p className="mt-6 text-center text-sm text-slate-600">
+            <p className="mt-6 text-center text-sm text-white">
               Back to{" "}
               <Link
                 href="/"
-                className="cursor-pointer font-medium text-sky-600 transition-colors hover:text-indigo-500"
+                className="cursor-pointer font-medium text-slate-200  transition-colors hover:text-sky-400 "
               >
                 homepage
               </Link>
