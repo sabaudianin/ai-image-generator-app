@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import { BreadcrumbPage } from "../ui/breadcrumb";
 
-export const BreadcrumbPageclient = () => {
+export const BreadcrumbPageClient = () => {
     const path = usePathname();
 
     const getPageTitle = (path: string) => {

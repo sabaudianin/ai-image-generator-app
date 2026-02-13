@@ -5,7 +5,8 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/s
 import { Separator } from "@/components/ui/separator";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList } from "@/components/ui/breadcrumb";
 import type { Metadata } from "next";
-import { BreadcrumbPageclient } from "@/components/sidebar/breadcrumb-page-client";
+import { BreadcrumbPageClient } from "@/components/sidebar/breadcrumb-page-client";
+import AppSidebar from "@/components/sidebar/app-sidebar";
 
 export const metadata: Metadata = {
   title: "AI Image Generator App",
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <Providers>
       <SidebarProvider>
+        <AppSidebar />
         <SidebarInset className="flex h-screen flex-col">
           <header className="bg-background/95 supports-backgrop-filter:bg-background/60 border-border/40 sticky top-0 z-10 border-b px-6 py-3 shadow-md backdrop-blur" >
             <div className="flex shrink-0 grow items-center gap-3">
@@ -28,7 +30,7 @@ export default function RootLayout({
                 <BreadcrumbList>
                   <BreadcrumbItem>
                   </BreadcrumbItem>
-                  <BreadcrumbPageclient />
+                  <BreadcrumbPageClient />
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
