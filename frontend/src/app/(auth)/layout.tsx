@@ -16,7 +16,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               href="/"
               className="mb-12 flex cursor-pointer items-center gap-3"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl  bg-linear-to-r from-sky-500 to-blue-600 backdrop-blur-sm">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-r from-sky-500 to-blue-600 backdrop-blur-sm">
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
               <span className="text-2xl font-bold text-white">
@@ -69,13 +69,10 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
 
-           
             <div className="mt-16 grid grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="text-2xl font-bold text-lime-300">1K+</div>
-                <div className="text-sm text-white">
-                  Images Generated
-                </div>
+                <div className="text-sm text-white">Images Generated</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-pink-300">0.5K+</div>
@@ -87,8 +84,6 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
           </div>
-
-         
         </div>
 
         {/* Right Side - Auth Form */}
@@ -100,10 +95,10 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
                 href="/"
                 className="inline-flex cursor-pointer items-center gap-2"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-r from-sky-500 to-blue-600 shadow-lg ">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-r from-sky-500 to-blue-600 shadow-lg">
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
-                <span className="text-white bg-clip-text text-xl font-bold ">
+                <span className="bg-clip-text text-xl font-bold text-white">
                   AI Image Generator App
                 </span>
               </Link>
@@ -117,7 +112,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               Back to{" "}
               <Link
                 href="/"
-                className="cursor-pointer font-medium text-slate-200  transition-colors hover:text-sky-400 "
+                className="cursor-pointer font-medium text-slate-200 transition-colors hover:text-sky-400"
               >
                 homepage
               </Link>
