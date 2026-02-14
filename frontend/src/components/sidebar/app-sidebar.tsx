@@ -16,11 +16,32 @@ export default async function AppSidebar() {
                             <p className="ml-8 text-sm font-medium tracking-wide">Generator</p>
                         </Link>
                     </SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu className="space-y-1">
+
+                        </SidebarMenu>
+                    </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>
-                <div className="mb-3 flex w-full items-center justify-center gap-2 text-xs"></div>
-                <UserButton variant="outline" className="border-muted/20 w-full transition-colors" disableDefaultLinks={true} additionalLinks={[{ label: "Customer Portal", href: "/dashboard/customer-portal", icon: <User className="h-4 w-4" /> }, { label: "Settings", href: "/dashboard/settings", icon: <User className="h-4 w-4" /> }]} />
+                <div className="mb-3 flex w-full items-center justify-center gap-2 text-xs">
+
+                </div>
+                <UserButton
+                    variant="outline"
+                    className="border-muted/20 w-full transition-colors"
+                    disableDefaultLinks={true}
+                    additionalLinks={[
+                        {
+                            label: "Customer Portal",
+                            href: "/dashboard/customer-portal",
+                            icon: <User className="h-4 w-4" />
+                        },
+                        {
+                            label: "Settings",
+                            href: "/dashboard/settings",
+                            icon: <Settings className="h-4 w-4" />
+                        }]} />
             </SidebarFooter>
         </Sidebar>
     )
