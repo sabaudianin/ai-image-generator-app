@@ -5,11 +5,13 @@ import { User, Sparkles, Settings } from "lucide-react";
 import Link from "next/link";
 
 import { SidebarMenuItems } from "./sidebarMenuItems";
+import { MobileSidebarClose } from "./mobileSidebarClose";
 
 export default async function AppSidebar() {
     return (
         <Sidebar className="border-r-0 bg-linear-to-b from-background to-muted">
             <SidebarContent className='px-3'>
+                <MobileSidebarClose />
                 <SidebarGroup>
                     <SidebarGroupLabel className="text-primary mt-6 mb-8 flex flex-col items-start justify-start px-2">
                         <Link href="/" className="mb-1 flex cursor-pointer items-center gap-2">
