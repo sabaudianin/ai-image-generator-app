@@ -5,8 +5,8 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/s
 import { Separator } from "@/components/ui/separator";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList } from "@/components/ui/breadcrumb";
 import type { Metadata } from "next";
-import { BreadcrumbPageClient } from "@/components/sidebar/breadcrumb-page-client";
-import AppSidebar from "@/components/sidebar/app-sidebar";
+import { BreadcrumbPageClient } from "@/components/sidebar/breadcrumbPageClient";
+import AppSidebar from "@/components/sidebar/appSidebar";
 
 export const metadata: Metadata = {
   title: "AI Image Generator App",

@@ -1,8 +1,10 @@
 "use server"
 import { UserButton } from "@daveyplate/better-auth-ui";
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu } from "@/components/ui/sidebar"
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuItem } from "@/components/ui/sidebar"
 import { User, Sparkles, Settings } from "lucide-react";
 import Link from "next/link";
+
+import { SidebarMenuItems } from "./sidebarMenuItems";
 
 export default async function AppSidebar() {
     return (
@@ -11,14 +13,14 @@ export default async function AppSidebar() {
                 <SidebarGroup>
                     <SidebarGroupLabel className="text-primary mt-6 mb-8 flex flex-col items-start justify-start px-2">
                         <Link href="/" className="mb-1 flex cursor-pointer items-center gap-2">
-                            <Sparkles className="text-primary" />
-                            <p className="font-bold tracking-tight text-2xl">AI Image </p>
-                            <p className="ml-8 text-sm font-medium tracking-wide">Generator</p>
+                            <Sparkles className="text-blue-500" />
+                            <p className="font-bold tracking-tight text-xl">AI Image </p>
+                            <p className="text-sm font-medium tracking-wide">Generator</p>
                         </Link>
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu className="space-y-1">
-
+                            <SidebarMenuItems />
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
@@ -29,7 +31,8 @@ export default async function AppSidebar() {
                 </div>
                 <UserButton
                     variant="outline"
-                    className="border-muted/20 w-full transition-colors"
+                    size="lg"
+                    className="border-muted/20 w-full transition-colors mb-2 bg-gray-200"
                     disableDefaultLinks={true}
                     additionalLinks={[
                         {
