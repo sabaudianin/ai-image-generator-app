@@ -7,6 +7,7 @@ import Link from "next/link";
 import { SidebarMenuItems } from "./sidebarMenuItems";
 import { MobileSidebarClose } from "./mobileSidebarClose";
 import { Credits } from "./credits";
+import UpgradePlan from "./upgradePlan";
 
 export default async function AppSidebar() {
     return (
@@ -29,8 +30,9 @@ export default async function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter className="bg-muted/30 border-t p-3">
-                <div className="mb-3 flex w-full items-center justify-end gap-2 text-xs">
+                <div className="mb-3 flex w-full items-center justify-center gap-2 text-xs">
                     <Credits />
+                    <UpgradePlan />
                 </div>
                 <UserButton
                     variant="outline"
