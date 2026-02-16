@@ -1,6 +1,6 @@
 "use server"
 import { UserButton } from "@daveyplate/better-auth-ui";
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuItem } from "@/components/ui/sidebar"
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu } from "@/components/ui/sidebar"
 import { User, Sparkles, Settings } from "lucide-react";
 import Link from "next/link";
 
@@ -28,8 +28,8 @@ export default async function AppSidebar() {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
-            <SidebarFooter>
-                <div className="mb-3 flex w-full items-center justify-center gap-2 text-xs">
+            <SidebarFooter className="bg-muted/30 border-t p-3">
+                <div className="mb-3 flex w-full items-center justify-end gap-2 text-xs">
                     <Credits />
                 </div>
                 <UserButton

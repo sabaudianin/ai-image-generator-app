@@ -6,7 +6,7 @@ export const Credits = async () => {
     const result = await getUserCredits();
     const credits = result?.success ? result.credits : 0;
     return (
-        <div className="group flex items-center gap-2">
+        <div className="group flex justify-start items-center gap-2">
             <div className="flex items-center gap-1">
                 <div className="relative">
                     <Coins className="h-4 w-4 text-yellow-500 transition-colors duration-200 group-hover:text-yellow-700" />
