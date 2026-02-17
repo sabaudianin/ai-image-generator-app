@@ -19,6 +19,7 @@ export const env = createEnv({
     AWS_ACCES_KEY_ID: z.string(),
     AWS_REGION: z.string(),
     AWS_S3_BUCKET_NAME: z.string(),
+    MODAL_ZIMAGE_URL: z.string().url(),
   },
 
   /**
@@ -45,6 +46,7 @@ export const env = createEnv({
     AWS_ACCES_KEY_ID: process.env.AWS_ACCES_KEY_ID,
     AWS_REGION: process.env.AWS_REGION,
     AWS_S3_BUCKET_NAME: process.env.AWS_S3_BUCKET_NAME,
+    MODAL_ZIMAGE_URL: process.env.MODAL_ZIMAGE_URL,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
