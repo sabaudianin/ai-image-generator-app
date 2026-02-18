@@ -20,7 +20,7 @@ interface ImageSettingsProps {
     onGenerate: () => void;
 }
 
-export default function ImageSettings({
+export const ImageSettings = ({
     prompt,
     width,
     setWidth,
@@ -34,7 +34,7 @@ export default function ImageSettings({
     setSeed,
     isGenerating,
     onGenerate,
-}: ImageSettingsProps) {
+}: ImageSettingsProps) => {
     const creditsNeeded = 1;
 
     return (
