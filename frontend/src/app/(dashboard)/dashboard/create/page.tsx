@@ -131,7 +131,13 @@ export default function CreatePage() {
       setIsGenerating(false)
     }
   }
-
+  if (isLoading) {
+    return (
+      <div className="flex min-h-100 items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
 
   return (<>
     <RedirectToSignIn />
