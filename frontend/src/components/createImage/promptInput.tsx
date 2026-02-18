@@ -35,52 +35,64 @@ export const PromptInput = ({ prompt,
     setNegativePrompt,
     currentImage,
     onDownload, }: PromptInputProps) => {
-    return (<Card className="shadow-lg">
-        <CardContent className="p-2 sm:p-3">
-            <div className="mb-2 flex items-start justify-between">
-                <div className="w-full">
-                    <h3 className="mb-0.5 text-sm font-bold text-center">Prompt</h3>
-                    <p className="text-muted-foreground text-sm text-center">Describe image you want to generate</p>
-                </div>
-            </div>
-            <div className="space-y-3">
-                <textarea value={prompt}
-                    onChange={(e) => setPrompt(e.target.value)}
-                    placeholder="Write here..."
-                    maxLength={500}
-                    rows={8}
-                    className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm focus:border-blue-400 focus:ring-2 focus:ring-blue-400" />
-                <input value={negativePrompt}
-                    onChange={(e) => setNegativePrompt(e.target.value)} placeholder="Negative prompt(optional)"
-                    className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm" />
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                    <span>{prompt.length}/500 characters</span>
-                    {prompt.length > 0 && (<Button onClick={() => setPrompt("")}
-                        variant="ghost" size="sm">
-                        <X className="h-6 w-6" />
-                        Clear</Button>)}
+    return (
+        <Card className="shadow-lg">
+            <CardContent className="p-2 sm:p-3">
+
+                <div className="mb-2 flex items-start justify-between">
+                    <div className="w-full">
+                        <h3 className="mb-0.5 text-sm font-bold text-center">Prompt</h3>
+                        <p className="text-muted-foreground text-sm text-center">Describe image you want to generate</p>
+                    </div>
                 </div>
 
-                {currentImage && (
-                    <div className="rounded-lg border border-blue-200 bg-radial-to-r from-blue-50 to-purple-50 p-3">
-                        <div className="mb-2 flex items-center justify-between">
-                            <h4 className="text-xs font-bold text-blue-900">Latest Image</h4>
-                            <Button className="h-6 gap-1 px-2 text-blue-700 hover:bg-blue-100">
-                                <Download className="h-3 w-3" />
-                                <span className="text-xs">Download</span>
-                            </Button>
-                        </div>
-                        <p className="mb-2 line-clamp-2 text-xs text-blue-800">{currentImage.prompt}</p>
-                        <div className="relative aspect-square w-full overflow-hidden rounded-md bg-white/50">
-                            <Image src={currentImage.imageUrl}
-                                alt={currentImage.prompt}
-                                fill
-                                unoptimized
-                                className="object-contain" />
-                        </div>
+                <div className="space-y-3">
+                    <textarea value={prompt}
+                        onChange={(e) => setPrompt(e.target.value)}
+                        placeholder="Write here..."
+                        maxLength={500}
+                        rows={8}
+                        className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm focus:border-blue-400 focus:ring-2 focus:ring-blue-400" />
+                    <input value={negativePrompt}
+                        onChange={(e) => setNegativePrompt(e.target.value)} placeholder="Negative prompt(optional)"
+                        className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm" />
+
+                    <div className="flex items-center justify-between text-sm text-gray-500">
+
+                        <span>{prompt.length}/500 characters</span>
+                        {prompt.length > 0 && (<Button onClick={() => setPrompt("")}
+                            variant="ghost" size="sm">
+                            <X className="h-6 w-6" />
+                            Clear</Button>)}
                     </div>
-                )}
-            </div>
-        </CardContent>
-    </Card>)
+
+                    {currentImage && (
+                        <div className="rounded-lg border border-blue-200 bg-radial-to-r from-blue-50 to-purple-50 p-3">
+
+                            <div className="mb-2 flex items-center justify-between">
+                                <h4 className="text-xs font-bold text-blue-900">Latest Image</h4>
+
+                                <Button className="h-6 gap-1 px-2 text-blue-700 hover:bg-blue-100"
+                                    onClick={() => onDownload(currentImage)} variant='ghost'
+                                    size="sm">
+                                    <Download className="h-3 w-3" />
+                                    <span className="text-xs">Download</span>
+                                </Button>
+                            </div>
+
+                            <p className="mb-2 line-clamp-2 text-xs text-blue-800">{currentImage.prompt}</p>
+
+                            <div className="relative aspect-square w-full overflow-hidden rounded-md bg-white/50">
+                                <Image src={currentImage.imageUrl}
+                                    alt={currentImage.prompt}
+                                    fill
+                                    unoptimized
+                                    className="object-contain" />
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </CardContent>
+        </Card>
+    )
 }
