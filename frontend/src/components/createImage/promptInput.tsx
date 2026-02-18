@@ -47,23 +47,26 @@ export const PromptInput = ({ prompt,
                 </div>
 
                 <div className="space-y-3">
-                    <textarea value={prompt}
+                    <textarea
+                        value={prompt}
                         onChange={(e) => setPrompt(e.target.value)}
                         placeholder="Write here..."
                         maxLength={500}
                         rows={8}
                         className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm focus:border-blue-400 focus:ring-2 focus:ring-blue-400" />
-                    <input value={negativePrompt}
+                    <input
+                        value={negativePrompt}
                         onChange={(e) => setNegativePrompt(e.target.value)} placeholder="Negative prompt(optional)"
                         className="border-input bg-background w-full rounded-md border px-3 py-2 text-sm" />
 
                     <div className="flex items-center justify-between text-sm text-gray-500">
 
                         <span>{prompt.length}/500 characters</span>
-                        {prompt.length > 0 && (<Button onClick={() => setPrompt("")}
-                            variant="ghost" size="sm">
-                            <X className="h-6 w-6" />
-                            Clear</Button>)}
+                        {prompt.length > 0 && (
+                            <Button onClick={() => setPrompt("")}
+                                variant="ghost" size="sm">
+                                <X className="h-6 w-6" />
+                                Clear</Button>)}
                     </div>
 
                     {currentImage && (
