@@ -30,7 +30,7 @@ export const ImageHistory = ({ generatedImages, onDownload }: ImageHistoryProps)
             <div className="mx-auto max-w-7xl">
                 <div className="mb-6 text-center">
                     <div className="mb-2 inline-flex items-center gap-2">
-                        <div className="h-6 w-1 rounded-full bg-linear-to-b from-blue-500 to-purple-600"></div>
+                        <div className="h-6 w-6 rounded-full bg-linear-to-b from-blue-500 to-purple-600"></div>
                         <h2 className="bg-linear-to-r from-gray-900 to-gray-600 bg-clip-text text-xl font-bold text-transparent">Recent Generation
                         </h2>
                         <div className="h-6 w-6 rounded-full bg-linear-to-b from-purple-600 to-blue-500"></div>
@@ -84,12 +84,13 @@ export const ImageHistory = ({ generatedImages, onDownload }: ImageHistoryProps)
                     </div>
                 ) : (
                     <div className="py-16 text-center">
-                        <div className="relative mx-auto"
+                        <div className="relative mx-auto mb-8"
                         >
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="h-32 w-32 amimate-pulse rounded-full bg-linear-to-br from-blue-100 to-purple-100"></div>
+                                <div className="h-32 w-32 animate-pulse rounded-full bg-linear-to-br from-blue-100 to-purple-100"></div>
                             </div>
-                            <div className="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-full border-2 border-dashed border-gray-300 bh-white shadow-lg">
+
+                            <div className="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-full border-2 border-dashed border-gray-300 bh-white shadow-lg ">
                                 <ImageIcon className="h-10 w-10 text-gray-400" />
                             </div>
                         </div>

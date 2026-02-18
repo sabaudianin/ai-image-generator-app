@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { ImageSettings } from "@/components/createImage/imageSettings";
 import { PromptInput } from "@/components/createImage/promptInput";
+import { ImageHistory } from "@/components/createImage/imageHistory";
 
 
 
@@ -61,6 +62,12 @@ export default function DashboardPage() {
         setNegativePrompt={setNegativePrompt}
         currentImage={null}
         onDownload={(img) => window.open(img.imageUrl, "_blank")} />
+
+
+      <ImageHistory
+        generatedImages={generatedImages}
+        onDownload={(img) => window.open(img.imageUrl, "_blank")}
+      />
     </>
   );
 }
