@@ -56,6 +56,34 @@ export default function ProjectPage() {
     const [searchQuery, setSearchQuery] = useState("");
     const [sortBy, setSortBy] = useState<SortBy>("newest");
     const router = useRouter();
+
+
+    useEffect(() => {
+        const initializeProjects = async () => {
+            try {
+                const [_, projectsResult] = await Promise.all([
+                    authClient.getSession(),
+                    getUserImageProjects(),
+                ]);
+
+                //set images
+
+                if (projectsResult.success && projectsResult.imageProjects) {
+                    setImageProjects(projectsResult.imageProjects as ImageProject[]);
+                    setFilteredProjects(projectsResult.imageProjects as ImageProject[]);
+                }
+            } catch (error) {
+                console.error("Image project initialization has failed", error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        void initializeProjects();
+    })
+
+
+    //filter and sort projects
+
     return (
         <div>page</div>
     )

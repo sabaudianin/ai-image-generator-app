@@ -86,7 +86,7 @@ export async function generateImage(
             model_id: string;
         };
 
-        const [, imageProject] = await db.$transaction([
+        const [_, imageProject] = await db.$transaction([
             db.user.update({
                 where: { id: session.user.id },
                 data: { credits: { decrement: creditsNeeded } },
