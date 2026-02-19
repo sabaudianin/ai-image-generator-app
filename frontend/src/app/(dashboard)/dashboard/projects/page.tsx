@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect, useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { RedirectToSignIn, SignedIn } from "@daveyplate/better-auth-ui";
 import {
     Loader2,
@@ -12,21 +15,13 @@ import {
     Image as ImageIcon,
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
-import { useEffect, useState } from "react";
-
-import Image from "next/image";
-
-
 import {
     deleteImageProject,
     getUserImageProjects,
 } from "@/actions/textToImage";
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-import { useRouter } from "next/navigation";
 
 interface ImageProject {
     id: string;
@@ -49,11 +44,10 @@ interface ImageProject {
 type SortBy = "newest" | "oldest" | "name";
 
 
-
 export default function ProjectPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [imageProjects, setImageProjects] = useState<ImageProject[]>([]);
-    const [filteredProjects, setFilteredProjects] = useState<ImageProject[]>([]);
+    // const [filteredProjects, setFilteredProjects] = useState<ImageProject[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [sortBy, setSortBy] = useState<SortBy>("newest");
     const router = useRouter();
@@ -71,7 +65,7 @@ export default function ProjectPage() {
 
                 if (projectsResult.success && projectsResult.imageProjects) {
                     setImageProjects(projectsResult.imageProjects as ImageProject[]);
-                    setFilteredProjects(projectsResult.imageProjects as ImageProject[]);
+
                 }
             } catch (error) {
                 console.error("Image project initialization has failed", error)
@@ -80,34 +74,54 @@ export default function ProjectPage() {
             }
         }
         void initializeProjects();
-    })
+    }, [])
 
 
     //filter and sort projects
-    useEffect(() => {
-        let filtered = imageProjects.filter((project) => project.prompt.toLowerCase().includes(searchQuery.toLowerCase()));
+    // useEffect(() => {
+    //     let filtered = imageProjects.filter((project) => project.prompt.toLowerCase().includes(searchQuery.toLowerCase()));
 
+    //     switch (sortBy) {
+    //         case "newest": {
+    //             filtered = filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    //             break;
+    //         }
+    //         case "oldest": {
+    //             filtered = filtered.sort((a, b) => (
+    //                 new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    //             ))
+    //             break;
+    //         }
+    //         case "name":
+    //             filtered
+    //                 = filtered.sort((a, b) => (a.prompt.localeCompare(b.prompt)));
+    //             break;
+
+
+    //     }
+    //     setFilteredProjects(filtered);
+
+    // }, [imageProjects, searchQuery, sortBy])
+
+
+    const filteredProjects = useMemo(() => {
+        //  Tworzymy nową tablice przez filter
+        const filtered = imageProjects.filter((project) =>
+            project.prompt.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        //  Sortujemy nowa tablicę
         switch (sortBy) {
-            case "newest": {
-                filtered = filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-                break;
-            }
-            case "oldest": {
-                filtered = filtered.sort((a, b) => (
-                    new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-                ))
-                break;
-            }
+            case "newest":
+                return filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+            case "oldest":
+                return filtered.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
             case "name":
-                filtered
-                    = filtered.sort((a, b) => (a.prompt.localeCompare(b.prompt)));
-                break;
-
-
+                return filtered.sort((a, b) => a.prompt.localeCompare(b.prompt));
+            default:
+                return filtered;
         }
-        setFilteredProjects(filtered);
-
-    }, [imageProjects, searchQuery, sortBy])
+    }, [imageProjects, searchQuery, sortBy]);
 
 
 
@@ -117,6 +131,8 @@ export default function ProjectPage() {
         const result = await deleteImageProject(projectId);
         if (result.success) {
             setImageProjects(prev => prev.filter(p => p.id !== projectId))
+        } else {
+            alert("Failed to delete the project");
         }
     }
 
@@ -171,7 +187,6 @@ export default function ProjectPage() {
                                         onChange={(e) => setSearchQuery(e.target.value)}
                                         className="pl-8"
                                     />
-
                                 </div>
 
                                 <select
@@ -193,8 +208,6 @@ export default function ProjectPage() {
                                 <div className="relative mb-6">
                                     <div className="border-muted bg-muted/20 flex h-24 w-24 items-center justify-center rounded-full border-2 border-dashed">
                                         <ImageIcon className="text-muted-foreground h-10 w-10" />
-
-
                                     </div>
                                 </div>
 
