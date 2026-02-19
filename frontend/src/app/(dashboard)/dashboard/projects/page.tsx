@@ -83,6 +83,30 @@ export default function ProjectPage() {
 
 
     //filter and sort projects
+    useEffect(() => {
+        let filtered = imageProjects.filter((project) => project.prompt.toLowerCase().includes(searchQuery.toLowerCase()));
+
+        switch (sortBy) {
+            case "newest": {
+                filtered = filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+                break;
+            }
+            case "oldest": {
+                filtered = filtered.sort((a, b) => (
+                    new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+                ))
+                break;
+            }
+            case "name":
+                filtered
+                    = filtered.sort((a, b) => (a.prompt.localeCompare(b.prompt)));
+                break;
+
+
+        }
+        setFilteredProjects(filtered);
+
+    }, [imageProjects, searchQuery, sortBy])
 
     return (
         <div>page</div>
