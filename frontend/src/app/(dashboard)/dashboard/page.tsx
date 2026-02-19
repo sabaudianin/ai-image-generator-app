@@ -51,7 +51,7 @@ export default function DashboardPage() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [imageProjects, setImageProjects] = useState<ImageProject[]>([]);
-  const [userStatus, setUserStatus] = useState<UserStats>({
+  const [userStats, setUserStats] = useState<UserStats>({
     totalImageProjects: 0,
     thisMonth: 0,
     thisWeek: 0,
@@ -84,7 +84,7 @@ export default function DashboardPage() {
         const thisMonth = new Date(now.getFullYear(), now.getMonth(), 1);
         const thisWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
 
-        setUserStatus({
+        setUserStats({
           totalImageProjects: images.length,
           thisMonth: images.filter(img => new Date(img.createdAt) >= thisMonth).length,
           thisWeek: images.filter(img => new Date(img.createdAt) >= thisWeek).length
@@ -97,13 +97,69 @@ export default function DashboardPage() {
       }
     }
     void initializeDashboard();
-  })
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-100 items-center justify-center">
+        <div className="flex flex-col items center gap-4">
+          <Loader2 className="text-primary h-8 w-8 animate-spin" />
+          <p className="text-muted-foreground text-sm">
+            Loading Dashboard....
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
-      <div>
-        DASHBOARD
-      </div>
+      <RedirectToSignIn />
+      <SignedIn>
+        <section className="space-y-8">
+          <div className="space-y-2">
+            <h1 className="from-primary to-primary/70 bg-linear-to-r bg-clip-text text-2xl font-bold tracking-tight text-transparent">
+              Welcome back{user?.name ?? ""}</h1>
+            <p className="text-muted-foreground text-base sm:text-lg">
+              Here is an overview of your workspace
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <Card className="relative overflow-hidden">
+              <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+                <CardTitle className="text-sm font-medium">
+                  Total Images
+                </CardTitle>
+                <ImageIcon className="h-4 w-4 text-purple-500" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-purple-500 ">
+                  {userStats.totalImageProjects}
+                </div>
+                <p className="text-muted-foreground">Image Generation</p>
+              </CardContent>
+            </Card>
+
+            <Card className="relative overflow-hidden">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                  This Month
+                </CardTitle>
+                <Calendar className="h-4 w-4 text-blue-500" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-blue-600">
+                  {userStats.thisMonth}
+                </div>
+                <p className="text-muted-foreground text-xs">
+                  Projects created
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+      </SignedIn>
     </>
   );
 }
