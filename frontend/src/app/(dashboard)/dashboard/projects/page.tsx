@@ -77,33 +77,6 @@ export default function ProjectPage() {
     }, [])
 
 
-    //filter and sort projects
-    // useEffect(() => {
-    //     let filtered = imageProjects.filter((project) => project.prompt.toLowerCase().includes(searchQuery.toLowerCase()));
-
-    //     switch (sortBy) {
-    //         case "newest": {
-    //             filtered = filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    //             break;
-    //         }
-    //         case "oldest": {
-    //             filtered = filtered.sort((a, b) => (
-    //                 new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-    //             ))
-    //             break;
-    //         }
-    //         case "name":
-    //             filtered
-    //                 = filtered.sort((a, b) => (a.prompt.localeCompare(b.prompt)));
-    //             break;
-
-
-    //     }
-    //     setFilteredProjects(filtered);
-
-    // }, [imageProjects, searchQuery, sortBy])
-
-
     const filteredProjects = useMemo(() => {
         //  Tworzymy nową tablice przez filter
         const filtered = imageProjects.filter((project) =>
@@ -279,7 +252,7 @@ export default function ProjectPage() {
                                                 className="h-8 w-8 p-0"
                                                 onClick={(e) => handleDownload(project.imageUrl, e)}>
                                                 <Download className="h-4 w-4" />
-                                                Download
+
                                             </Button>
                                             <Button
                                                 variant="ghost"
@@ -287,7 +260,7 @@ export default function ProjectPage() {
                                                 className="h-8 w-8 p-0"
                                                 onClick={(e) => handleDelete(project.id, e)}>
                                                 <Trash2 className="h-4 w-4" />
-                                                Delete
+
                                             </Button>
                                         </div>
 

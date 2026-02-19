@@ -1,73 +1,109 @@
-'use client'
-import React, { useState } from "react";
-import { ImageSettings } from "@/components/createImage/imageSettings";
-import { PromptInput } from "@/components/createImage/promptInput";
-import { ImageHistory } from "@/components/createImage/imageHistory";
+"use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { RedirectToSignIn, SignedIn } from "@daveyplate/better-auth-ui";
+import {
+  Loader2,
+  Sparkles,
+  Calendar,
+  TrendingUp,
+  Star,
+  ArrowRight,
+  Image as ImageIcon,
+  Settings,
+} from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { getUserImageProjects } from "@/actions/textToImage";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { string } from "zod";
 
-
-export interface GeneratedImage {
-  s3_key: string;
-  imageUrl: string;
+interface ImageProject {
+  id: string;
+  name: string | null;
   prompt: string;
-  negativePrompt?: string | null;
+  negativePrompt: string | null;
+  imageUrl: string;
+  s3Key: string;
   width: number;
   height: number;
   numInferenceSteps: number;
   guidanceScale: number;
   seed: number;
   modelId: string;
-  timestamp: Date;
+  userId: string;
+  createdAt: string | Date;
+  updatedAt: string | Date;
 }
+
+interface UserStats {
+  totalImageProjects: number;
+  thisMonth: number;
+  thisWeek: number;
+}
+
+
+
+
 export default function DashboardPage() {
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [prompt, setPrompt] = useState("");
-  const [negativePrompt, setNegativePrompt] = useState("");
-  const [width, setWidth] = useState(1024);
-  const [height, setHeight] = useState(1024);
-  const [numInferenceSteps, setNumInferenceSteps] = useState(9);
-  const [guidanceScale, setGuidanceScale] = useState(0);
-  const [seed, setSeed] = useState("");
-  const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>([]);
-  const [currentImage, setCurrentImage] = useState<GeneratedImage | null>(null);
+  const [imageProjects, setImageProjects] = useState<ImageProject[]>([]);
+  const [userStatus, setUserStatus] = useState<UserStats>({
+    totalImageProjects: 0,
+    thisMonth: 0,
+    thisWeek: 0,
+  })
+  const [user, setUser] = useState<{
+    name?: string;
+    createdAt?: string | Date
+  } | null>(null)
 
+  const router = useRouter();
 
-  const generateImage = async () => {
+  useEffect(() => {
+    const initializeDashboard = async () => {
+      try {
+        const [sessionResult, imageResult] = await Promise.all([
+          authClient.getSession(),
+          getUserImageProjects(),
+        ])
+        //setUser
+        if (sessionResult?.data?.user) {
+          setUser(sessionResult.data.user)
+        }
+        //setImage
+        if (imageResult.success && imageResult.imageProjects) {
+          setImageProjects(imageResult.imageProjects as ImageProject[])
+        }
+        //setUSer Stats
+        const images = (imageResult.imageProjects as ImageProject[]);
+        const now = new Date();
+        const thisMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        const thisWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
 
-    return;
-  }
+        setUserStatus({
+          totalImageProjects: images.length,
+          thisMonth: images.filter(img => new Date(img.createdAt) >= thisMonth).length,
+          thisWeek: images.filter(img => new Date(img.createdAt) >= thisWeek).length
+        })
+
+      } catch (error) {
+        console.error("Failed initialized Dashbord", error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    void initializeDashboard();
+  })
+
   return (
     <>
-      <ImageSettings
-        prompt={prompt}
-        width={width}
-        setWidth={setWidth}
-        height={height}
-        setHeight={setHeight}
-        numInferenceSteps={numInferenceSteps}
-        setNumInferenceSteps={setNumInferenceSteps}
-        guidanceScale={guidanceScale}
-        setGuidanceScale={setGuidanceScale}
-        seed={seed}
-        setSeed={setSeed}
-        isGenerating={isGenerating}
-        onGenerate={generateImage}
-      />
-
-      <PromptInput prompt={prompt}
-        setPrompt={setPrompt}
-        negativePrompt={negativePrompt}
-        setNegativePrompt={setNegativePrompt}
-        currentImage={null}
-        onDownload={(img) => window.open(img.imageUrl, "_blank")} />
-
-
-      <ImageHistory
-        generatedImages={generatedImages}
-        onDownload={(img) => window.open(img.imageUrl, "_blank")}
-      />
+      <div>
+        DASHBOARD
+      </div>
     </>
   );
 }
