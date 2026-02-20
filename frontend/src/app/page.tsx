@@ -431,6 +431,83 @@ export default function HomePage() {
         </div>
       </section>
 
+
+      <section id="pricing" className="relative overflow-hidden bg-slate-50 py-24 sm:py-32">
+
+        <div className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,#eef2ff_0%,#f8fafc_100%)]" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-2xl text-center">
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+              Start Creating{" "}
+              <span className="bg-linear-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">
+                For Free
+              </span>
+            </h2>
+            <p className="mt-6 text-lg text-slate-600">
+              Experience the full power of ZImage AI without any upfront cost.
+              Start generating images in seconds.
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-lg">
+            <Card className="group relative overflow-hidden border-0 bg-white/80 p-1 backdrop-blur-xl shadow-2xl shadow-indigo-100 transition-all duration-300 hover:shadow-indigo-200">
+
+              <div className="absolute inset-0 bg-linear-to-r from-indigo-500 to-cyan-500 opacity-20 transition-opacity group-hover:opacity-30" />
+
+              <CardContent className="relative rounded-xl bg-white p-8 sm:p-10">
+
+                <div className="absolute top-0 right-0 rounded-bl-2xl bg-linear-to-r from-indigo-600 to-cyan-600 px-6 py-1.5 text-xs font-bold uppercase tracking-wider text-white">
+                  Most Popular
+                </div>
+
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold text-slate-900">Free Starter</h3>
+                  <div className="mt-4 flex items-baseline gap-1">
+                    <span className="text-5xl font-extrabold tracking-tight text-slate-900">$0</span>
+                    <span className="text-slate-500 font-medium">/forever</span>
+                  </div>
+                  <p className="mt-4 text-slate-600 text-sm">
+                    Perfect for exploring AI-powered creativity with no strings attached.
+                  </p>
+                </div>
+
+                <div className="mb-8 space-y-4">
+                  {pricingFeatures.map((feature, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                        <CheckCircle2 className="h-4 w-4" />
+                      </div>
+                      <span className="text-sm font-medium text-slate-600">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link href="/dashboard">
+                  <Button
+                    className="group/btn w-full cursor-pointer gap-2 bg-slate-900 py-7 text-lg font-bold text-white transition-all hover:bg-indigo-600"
+                    size="lg"
+                  >
+                    <Sparkles className="h-5 w-5 transition-transform group-hover/btn:rotate-12" />
+                    Get Started Now
+                  </Button>
+                </Link>
+
+                <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium text-slate-400">
+                  <Zap className="h-3 w-3 fill-amber-400 text-amber-400" />
+                  <span>10 free credits included • No credit card required</span>
+                </div>
+              </CardContent>
+            </Card>
+
+
+            <p className="mt-8 text-center text-sm text-slate-500">
+              Need more? <span className="font-semibold text-indigo-600">Pro plans coming soon!</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
     </section>
   );
 }
