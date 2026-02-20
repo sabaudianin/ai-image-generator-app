@@ -7,7 +7,7 @@ import {
   Scissors,
   Expand,
   Target,
-  Download,
+
   CheckCircle2,
   Play,
   LogIn
@@ -144,9 +144,9 @@ export default function HomePage() {
 
             <div className="order-2 md:order-1 flex justify-between md:block px-4 md:px-0 ">
               <Link href="/auth/sign-in">
-                <Button variant="ghost" className="cursor-pointer text-slate-600 hover:text-indigo-600">
+                <Button variant="ghost" className="cursor-pointer text-slate-600 hover:text-indigo-600 font-semibold">
                   Sign In
-                  <LogIn className="ml-2 h-4 w-4" />
+                  <LogIn className="ml-2 h-4 w-4 font-semibold" />
                 </Button>
               </Link>
 
@@ -412,9 +412,7 @@ export default function HomePage() {
 
                   <div className="flex items-center gap-4">
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-indigo-500 to-cyan-500 text-sm font-bold text-white shadow-sm">
-                      {testimonial.name.split(" ").map(n => n[0]).join("")}
-                    </div>
+
                     <div>
                       <div className="font-bold text-slate-900">
                         {testimonial.name}
@@ -509,7 +507,7 @@ export default function HomePage() {
       </section>
 
 
-      <section className="relative py-12  overflow-hidden">
+      <section className="relative py-12 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <div className="relative isolate overflow-hidden bg-slate-900 px-6 py-20 text-center shadow-2xl rounded-3xl sm:px-16">
@@ -562,6 +560,83 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <footer className="border-t border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="py-16">
+            <div className="grid gap-12 md:grid-cols-4 lg:gap-16">
+
+
+              <div className="md:col-span-2">
+                <div className="group mb-6 flex items-center gap-2 cursor-default">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-r from-indigo-500 to-cyan-600 shadow-md transition-transform group-hover:rotate-12">
+                    <Sparkles className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="bg-linear-to-r from-indigo-600 to-cyan-600 bg-clip-text text-2xl font-bold text-transparent">
+                    AI Image Generator
+                  </span>
+                </div>
+                <p className="max-w-sm text-base leading-relaxed text-slate-500">
+                  Empowering creators with cutting-edge AI technology. Turn your most imaginative ideas into high-quality visual reality in seconds.
+                </p>
+              </div>
+
+
+              <div>
+                <h3 className="mb-6 text-sm font-bold uppercase tracking-wider text-slate-900">
+                  Product
+                </h3>
+                <ul className="space-y-4 text-sm font-medium text-slate-600">
+                  <li>
+                    <Link href="#features" className="transition-colors hover:text-indigo-600">Features</Link>
+                  </li>
+                  <li>
+                    <Link href="#pricing" className="transition-colors hover:text-indigo-600">Pricing</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard" className="transition-colors hover:text-indigo-600">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="transition-colors hover:text-indigo-600">Showcase</Link>
+                  </li>
+                </ul>
+              </div>
+
+
+              <div>
+                <h3 className="mb-6 text-sm font-bold uppercase tracking-wider text-slate-900">
+                  Legal & Support
+                </h3>
+                <ul className="space-y-4 text-sm font-medium text-slate-600">
+                  <li>
+                    <Link href="mailto:rafbobbob@gmail.com" className="transition-colors hover:text-indigo-600">Contact Us</Link>
+                  </li>
+                  <li>
+                    <Link href="/#" className="transition-colors hover:text-indigo-600">Privacy Policy</Link>
+                  </li>
+                  <li>
+                    <Link href="/#" className="transition-colors hover:text-indigo-600">Terms of Service</Link>
+                  </li>
+                  <li>
+                    <div className="flex items-center gap-2 text-emerald-600">
+                      <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                      System Status: OK
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+
+            <div className="mt-16 border-t border-slate-300 pt-8 text-center text-sm text-slate-500">
+              <p>&copy; {new Date().getFullYear()} AI Image Generator. All rights reserved.</p>
+
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
     </section>
   );
 }
