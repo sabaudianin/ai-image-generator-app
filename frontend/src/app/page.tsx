@@ -359,6 +359,78 @@ export default function HomePage() {
         </div>
       </section>
 
+
+      <section id="testimonials" className="relative bg-white py-24 sm:py-32 overflow-hidden">
+        {/* Subtelne tło dekoracyjne */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-indigo-50/20 via-transparent to-transparent -z-10" />
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-2xl text-center">
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+              Loved by{" "}
+              <span className="bg-linear-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">
+                Creators
+              </span>
+            </h2>
+            <p className="mt-6 text-lg text-slate-600">
+              Join thousands of satisfied users who are already transforming their ideas into stunning visuals.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <Card
+                key={index}
+                className="group relative border-slate-200/60 bg-white/50 backdrop-blur-sm transition-all duration-300 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5"
+              >
+                <CardContent className="p-8">
+
+                  <div className="absolute top-6 right-8 text-slate-100 group-hover:text-indigo-100 transition-colors duration-300">
+                    <svg width="40" height="30" viewBox="0 0 40 30" fill="currentColor">
+                      <path d="M12.5 0c-6.9 0-12.5 5.6-12.5 12.5v17.5h15v-17.5h-10c0-4.1 3.4-7.5 7.5-7.5v-5zm22.5 0c-6.9 0-12.5 5.6-12.5 12.5v17.5h15v-17.5h-10c0-4.1 3.4-7.5 7.5-7.5v-5z" />
+                    </svg>
+                  </div>
+
+
+                  <div className="mb-6 flex items-center gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-4 w-4 ${i < Number(testimonial.rating)
+                          ? "fill-amber-400 text-amber-400"
+                          : "fill-slate-200 text-slate-200"
+                          }`}
+                      />
+                    ))}
+                  </div>
+
+
+                  <p className="relative z-10 mb-8 text-slate-600 leading-relaxed italic">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </p>
+
+
+                  <div className="flex items-center gap-4">
+
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-indigo-500 to-cyan-500 text-sm font-bold text-white shadow-sm">
+                      {testimonial.name.split(" ").map(n => n[0]).join("")}
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm font-medium text-indigo-600/80">
+                        {testimonial.role}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </section>
   );
 }
