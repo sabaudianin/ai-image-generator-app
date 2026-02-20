@@ -18,8 +18,8 @@ import { Gallery } from "@/components/gallery/gallery";
 
 
 const stats = [
-  { label: "Images Generated", value: "50K+", color: "text-indigo-600" },
-  { label: "Active Users", value: "5K+", color: "text-purple-600" },
+  { label: "Images Generated", value: "5K+", color: "text-indigo-600" },
+  { label: "Active Users", value: "1K+", color: "text-purple-600" },
   { label: "Uptime", value: "99.9%", color: "text-cyan-600" },
   { label: "User Rating", value: "4.8★", color: "text-amber-500" },
   { label: "Support", value: "24/7", color: "text-blue-600", class: "col-span-2 sm:col-span-1" },]
@@ -28,8 +28,8 @@ const stats = [
 const features = [
   {
     icon: <Scissors className="h-8 w-8" />,
-    title: "Prompt-to-Image",
-    description: "Turn any idea into an image with a simple text prompt.",
+    title: "Prompt to Image",
+    description: "Turn any idea into an image just with a simple text prompt.",
     color: "text-emerald-600",
     bgColor: "bg-emerald-100",
   },
@@ -51,7 +51,7 @@ const features = [
   },
   {
     icon: <Zap className="h-8 w-8" />,
-    title: "Lightning Fast",
+    title: "Incredible Fast",
     description:
       "Generate high-quality images in seconds with optimized AI infrastructure.",
     color: "text-amber-600",
@@ -230,6 +230,58 @@ export default function HomePage() {
 
 
       <Gallery />
+
+      <section id="features" className="relative bg-slate-50 py-24 sm:py-32">
+
+        <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-size-[16px_16px] mask-[radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-2xl text-center">
+
+            <span className="mb-4 inline-block text-sm font-semibold tracking-wider uppercase text-indigo-600">
+              Features
+            </span>
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+              Powerful AI Images at Your{" "}
+              <span className="bg-linear-to-r from-indigo-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+                Fingertips
+              </span>
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-slate-600">
+              Everything you need to create, manage, and scale your creative process with the power of artificial intelligence.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature, index) => (
+              <Card
+                key={index}
+                className="group relative overflow-hidden border-slate-200/60 bg-white/80 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5"
+              >
+                <CardContent className="p-8 text-center">
+
+                  <div
+                    className={`${feature.bgColor} ${feature.color} mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
+                  >
+
+                    {feature.icon}
+                  </div>
+
+                  <h3 className="mb-3 text-xl font-bold text-slate-900">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-slate-600">
+                    {feature.description}
+                  </p>
+                </CardContent>
+
+
+                <div className="absolute bottom-0 left-0 h-1 w-0 bg-linear-to-r from-indigo-500 to-cyan-500 transition-all duration-300 group-hover:w-full" />
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
     </section>
   );
