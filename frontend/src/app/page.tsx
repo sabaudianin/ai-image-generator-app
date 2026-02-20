@@ -17,6 +17,27 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Gallery } from "@/components/gallery/gallery";
 
 
+const steps = [
+  {
+    step: "01",
+    title: "Write Your Prompt",
+    description:
+      "Describe what you want to see. Add details like style, lighting, camera, and mood.",
+  },
+  {
+    step: "02",
+    title: "Pick Your Settings",
+    description:
+      "Set image size and generation parameters, then iterate quickly until it looks right.",
+  },
+  {
+    step: "03",
+    title: "Generate & Download",
+    description:
+      "Get your image in seconds. Download or save it to your projects.",
+  },
+]
+
 const stats = [
   { label: "Images Generated", value: "5K+", color: "text-indigo-600" },
   { label: "Active Users", value: "1K+", color: "text-purple-600" },
@@ -261,7 +282,7 @@ export default function HomePage() {
                 <CardContent className="p-8 text-center">
 
                   <div
-                    className={`${feature.bgColor} ${feature.color} mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
+                    className={`${feature.bgColor} ${feature.color} mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
                   >
 
                     {feature.icon}
@@ -278,6 +299,61 @@ export default function HomePage() {
 
                 <div className="absolute bottom-0 left-0 h-1 w-0 bg-linear-to-r from-indigo-500 to-cyan-500 transition-all duration-300 group-hover:w-full" />
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-white py-12 ">
+
+        <div className="absolute top-0 right-0 -z-10 h-full w-1/2 bg-linear-to-l from-indigo-50/50 to-transparent" />
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-20 max-w-2xl text-center">
+            <span className="mb-4 inline-block text-sm font-semibold tracking-wider uppercase text-cyan-600">
+              Workflow
+            </span>
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+              Simple. Fast.{" "}
+              <span className="bg-linear-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">
+                Professional.
+              </span>
+            </h2>
+            <p className="mt-6 text-lg text-slate-600">
+              Get professional AI-generated results in three simple steps. No complex setup required.
+            </p>
+          </div>
+
+          <div className="grid gap-12 md:grid-cols-3">
+            {steps.map((step, index) => (
+              <div key={index} className="group relative">
+
+                {index < steps.length - 1 && (
+                  <div className="absolute top-6 left-12 hidden h-0.5 w-full bg-slate-100 md:block">
+                    <div className="h-full w-0 bg-linear-to-r from-indigo-500 to-cyan-500 transition-all duration-1000 group-hover:w-full" />
+                  </div>
+                )}
+
+                <div className="relative z-10">
+
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-indigo-500 to-cyan-600 text-xl font-bold text-white shadow-xl shadow-indigo-200 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    {step.step}
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-2xl font-bold text-slate-900 transition-colors group-hover:text-indigo-600">
+                      {step.title}
+                    </h3>
+                    <p className="text-base leading-relaxed text-slate-600">
+                      {step.description}
+                    </p>
+                  </div>
+                  {/* efekt  ghosta */}
+                  <div className="absolute -top-4 -left-4 -z-10 select-none text-8xl font-bold text-slate-100/50 transition-colors group-hover:text-indigo-50/50">
+                    0{step.step}
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
