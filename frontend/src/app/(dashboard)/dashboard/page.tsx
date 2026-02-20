@@ -292,7 +292,7 @@ export default function DashboardPage() {
                   <Button
                     asChild
                     className="gap-2 bg-purple-600 hover:bg-purple-700"
-                  >  <Link href="/dashboard/create">
+                  ><Link href="/dashboard/create">
                       <ImageIcon className="h-4 w-4" />
                       Create Your First Image
                     </Link>
@@ -333,18 +333,8 @@ export default function DashboardPage() {
                         </div>
                       </div>
                       <div className="shrink-0">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          asChild
-                        >
-                          <a
-                            href={project.imageUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Open
-                          </a>
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={project.imageUrl} target="_blank" rel="noopener noreferrer">Open</a>
                         </Button>
                       </div>
                     </div>
