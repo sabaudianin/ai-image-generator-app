@@ -115,9 +115,9 @@ const pricingFeatures = [
 
 export default function HomePage() {
   return (
-    <section className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/20 to-slate-100">
+    <section className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/20 to-slate-100 ">
 
-      <nav className="sticky top-0 border-b border-slate-200 bg-linear-to-br from-indigo-100 to-cyan-100 backdrop-blur z-50">
+      <nav className="sticky top-0 z-50 border-b border-slate-200 bg-indigo-100/50 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <div className="flex flex-col md:flex-row md:items-center w-full py-2 md:py-0">
