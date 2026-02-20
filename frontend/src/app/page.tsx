@@ -17,7 +17,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Gallery } from "@/components/gallery/gallery";
 
 
-
+const stats = [
+  { label: "Images Generated", value: "50K+", color: "text-indigo-600" },
+  { label: "Active Users", value: "5K+", color: "text-purple-600" },
+  { label: "Uptime", value: "99.9%", color: "text-cyan-600" },
+  { label: "User Rating", value: "4.8★", color: "text-amber-500" },
+  { label: "Support", value: "24/7", color: "text-blue-600", class: "col-span-2 sm:col-span-1" },]
 
 
 const features = [
@@ -50,7 +55,7 @@ const features = [
     description:
       "Generate high-quality images in seconds with optimized AI infrastructure.",
     color: "text-amber-600",
-    bgColor: "bg-amber-100",
+    bgColor: "bg-amber-100 ",
   },
 ];
 
@@ -89,20 +94,20 @@ const pricingFeatures = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/20 to-slate-100">
+    <section className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/20 to-slate-100">
 
-      <nav className="sticky top-0 border-b border-slate-200 bg-slate-50/80 backdrop-blur z-50">
+      <nav className="sticky top-0 border-b border-slate-200 bg-linear-to-br from-indigo-100 to-cyan-100 backdrop-blur z-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <div className="flex flex-col md:flex-row md:items-center w-full py-2 md:py-0">
 
 
             <div className="order-1 md:order-2 flex-1">
-              <div className="p-4 md:p-6 flex items-center justify-center gap-4">
+              <div className="group md:p-6 flex items-center justify-center gap-4">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-r from-indigo-500 to-cyan-500 shadow-lg">
-                  <Sparkles className="h-5 w-5 text-white" />
+                  <Sparkles className="h-5 w-5 text-white transition-transform duration-500 group-hover:rotate-45" />
                 </div>
-                <span className="bg-linear-to-r from-indigo-600 to-cyan-600 bg-clip-text text-2xl md:text-3xl font-bold text-transparent tracking-widest">
+                <span className="py-4 bg-linear-to-r from-indigo-600 to-cyan-600 bg-clip-text text-2xl md:text-4xl font-extrabold text-transparent tracking-widest ">
                   AI Image Generator
                 </span>
               </div>
@@ -116,7 +121,7 @@ export default function HomePage() {
             </div>
 
 
-            <div className="order-2 md:order-1 flex justify-between md:block px-4 md:px-0 pb-4 md:pb-0">
+            <div className="order-2 md:order-1 flex justify-between md:block px-4 md:px-0 ">
               <Link href="/auth/sign-in">
                 <Button variant="ghost" className="cursor-pointer text-slate-600 hover:text-indigo-600">
                   Sign In
@@ -149,8 +154,83 @@ export default function HomePage() {
         </div>
       </nav>
 
+      <main className="relative overflow-hidden py-20 md:py-32">
+
+        <div className="absolute top-0 left-1/2 -z-10 h-150 w-150 -translate-x-1/2 rounded-full bg-linear-to-tr from-indigo-100/40 to-purple-100/40 blur-3xl" />
+        <div className="absolute -top-24 right-0 -z-10 h-100 w-100 rounded-full bg-cyan-50/50 blur-3xl" />
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+
+
+            <div className="group mb-10 inline-flex items-center gap-2 rounded-full border border-indigo-200/50 bg-white/80 px-4 py-1.5 text-sm backdrop-blur-sm shadow-sm transition-all hover:border-indigo-300">
+              <Sparkles className="h-4 w-4 text-indigo-600 animate-pulse" />
+              <span className="font-semibold text-indigo-800">
+                Powered by ZImage AI
+              </span>
+            </div>
+
+            <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-slate-900 sm:text-7xl">
+              Turn Text into{" "}
+              <span className="relative">
+                <span className="bg-linear-to-r from-indigo-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
+                  Images
+                </span>
+
+                <div className="absolute -bottom-2 left-0 h-1.5 w-full rounded-full bg-indigo-600/10" />
+              </span>
+            </h1>
+
+            <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+              Create high-quality images from text prompts in a moment. Save generations to your
+              <span className="font-medium text-slate-900"> private library</span> and build something amazing.
+            </p>
+
+
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Link href="/dashboard">
+                <Button
+                  size="lg"
+                  className="group cursor-pointer gap-2 px-8 py-7 text-base bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition-all hover:scale-105 active:scale-9 duration-300"
+                >
+                  <Sparkles className="h-5 w-5 transition-transform duration-500 group-hover:rotate-45" />
+                  Try to Generate Now
+                </Button>
+              </Link>
+
+              <Link href="/dashboard">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="cursor-pointer gap-2 px-8 py-7 text-base border-slate-200 hover:bg-slate-50 transition-all"
+                >
+                  <Play className="h-5 w-5 fill-current" />
+                  See AI in Action
+                </Button>
+              </Link>
+            </div>
+
+
+            <div className="mt-24">
+              <p className="mb-10 text-sm font-semibold uppercase tracking-widest text-slate-400">
+                Trusted by thousands of creators
+              </p>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">
+                {stats.map((stat, i) => (
+                  <div key={i} className={`group rounded-2xl border border-slate-100 bg-white p-6 transition-all hover:border-indigo-100 hover:shadow-xl hover:shadow-indigo-500/5 ${stat.class ?? ""}`}>
+                    <div className={`text-2xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
+                    <div className="text-xs font-medium text-slate-500">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+
       <Gallery />
 
-    </main >
+    </section>
   );
 }
