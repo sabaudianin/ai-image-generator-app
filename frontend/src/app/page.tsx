@@ -360,7 +360,7 @@ export default function HomePage() {
       </section>
 
 
-      <section id="testimonials" className="relative bg-white py-24 sm:py-32 overflow-hidden">
+      <section id="testimonials" className="relative bg-white py-16 overflow-hidden">
         {/* Subtelne tło dekoracyjne */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-indigo-50/20 via-transparent to-transparent -z-10" />
 
@@ -432,7 +432,7 @@ export default function HomePage() {
       </section>
 
 
-      <section id="pricing" className="relative overflow-hidden bg-slate-50 py-24 sm:py-32">
+      <section id="pricing" className="relative overflow-hidden bg-slate-50 py-16 ">
 
         <div className="absolute inset-0 bg-[radial-gradient(45%_45%_at_50%_50%,#eef2ff_0%,#f8fafc_100%)]" />
 
@@ -508,6 +508,60 @@ export default function HomePage() {
         </div>
       </section>
 
+
+      <section className="relative py-12  overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+          <div className="relative isolate overflow-hidden bg-slate-900 px-6 py-20 text-center shadow-2xl rounded-3xl sm:px-16">
+
+
+            <svg
+              viewBox="0 0 1024 1024"
+              className="absolute left-1/2 top-1/2 -z-10 h-256 w-5xl -translate-x-1/2 mask-[radial-gradient(closest-side,white,transparent)]]"
+              aria-hidden="true"
+            >
+              <circle cx="512" cy="512" r="512" fill="url(#gradient-cta)" fillOpacity="0.25" />
+              <defs>
+                <radialGradient id="gradient-cta">
+                  <stop stopColor="#6366f1" />
+                  <stop offset={1} stopColor="#06b6d4" />
+                </radialGradient>
+              </defs>
+            </svg>
+
+            <div className="mx-auto max-w-2xl">
+              <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+                Ready to Transform <br />
+                <span className="bg-linear-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                  Your Text into Art?
+                </span>
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-300">
+                Join thousands of creators using ZImage AI to bring their ideas to life.
+                Start creating today with your first 10 credits on us.
+              </p>
+
+              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Link href="/dashboard">
+                  <Button
+                    size="lg"
+                    className="group cursor-pointer gap-2 bg-white px-8 py-7 text-base font-bold text-slate-900 transition-all hover:scale-105 hover:bg-slate-100 active:scale-95 shadow-xl"
+                  >
+                    <Sparkles className="h-5 w-5 text-indigo-600 transition-transform group-hover:rotate-12" />
+                    Try It Free Now
+                  </Button>
+                </Link>
+
+
+              </div>
+
+              <p className="mt-6 text-sm text-slate-400">
+                No credit card required • Instant access
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 }
