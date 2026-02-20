@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { RedirectToSignIn, SignedIn } from "@daveyplate/better-auth-ui";
 import {
   Loader2,
@@ -19,7 +18,7 @@ import { authClient } from "@/lib/auth-client";
 import { getUserImageProjects } from "@/actions/textToImage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { string } from "zod";
+
 
 interface ImageProject {
   id: string;
@@ -62,7 +61,7 @@ export default function DashboardPage() {
     createdAt?: string | Date
   } | null>(null)
 
-  const router = useRouter();
+
 
   useEffect(() => {
     const initializeDashboard = async () => {
@@ -103,7 +102,7 @@ export default function DashboardPage() {
   if (isLoading) {
     return (
       <div className="flex min-h-100 items-center justify-center">
-        <div className="flex flex-col items center gap-4">
+        <div className="flex flex-col items-center gap-4">
           <Loader2 className="text-primary h-8 w-8 animate-spin" />
           <p className="text-muted-foreground text-sm">
             Loading Dashboard....
@@ -267,10 +266,12 @@ export default function DashboardPage() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => router.push("/dashboard/projects")}
+                  asChild
                   className="text-purple-600 hover:text-purple-700"
                 >
-                  View All <ArrowRight className="ml-1 h-4 w-4" />
+                  <Link href="/dashboard/projects">
+                    View All <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
                 </Button>
               )}
             </CardHeader>
@@ -289,11 +290,12 @@ export default function DashboardPage() {
                     Start generating images from text prompts
                   </p>
                   <Button
-                    onClick={() => router.push("/dashboard/create")}
+                    asChild
                     className="gap-2 bg-purple-600 hover:bg-purple-700"
-                  >
-                    <ImageIcon className="h-4 w-4" />
-                    Create Your First Image
+                  >  <Link href="/dashboard/create">
+                      <ImageIcon className="h-4 w-4" />
+                      Create Your First Image
+                    </Link>
                   </Button>
                 </div>
               ) : (
@@ -334,11 +336,15 @@ export default function DashboardPage() {
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() =>
-                            window.open(project.imageUrl, "_blank")
-                          }
+                          asChild
                         >
-                          Open
+                          <a
+                            href={project.imageUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Open
+                          </a>
                         </Button>
                       </div>
                     </div>
